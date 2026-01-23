@@ -1,0 +1,802 @@
+{
+  "schema_version": 27,
+  "standard_lib_version": 86,
+  "action_runtime_version": 66,
+  "name": "Cyber News Aggregator",
+  "description": null,
+  "guid": "a4deb4d7bb1440d15",
+  "slug": "cyber_news_aggregator",
+  "agents": [
+    {
+      "type": "Agents::HTTPRequestAgent",
+      "name": "Krebs on Security",
+      "disabled": false,
+      "description": null,
+      "guid": "677c5e87fe9bf38",
+      "origin_story_identifier": "cloud:a035a6901a4fcb5758828235c959fc6b:a4deb4d7bb144734d229d6d5",
+      "options": {
+        "url": "https://krebsonsecurity.com/feed/",
+        "content_type": "xml",
+        "method": "get",
+        "payload": {}
+      },
+      "reporting": {
+        "time_saved_value": 0,
+        "time_saved_unit": "minutes"
+      },
+      "monitoring": {
+        "monitor_all_events": false,
+        "monitor_failures": false,
+        "monitor_no_events_emitted": null
+      },
+      "template": {
+        "created_from_template_guid": null,
+        "created_from_template_version": null,
+        "template_tags": []
+      },
+      "width": null,
+      "schedule": [
+        {
+          "cron": "*/20 * * * *",
+          "timezone": "Europe/Berlin"
+        }
+      ]
+    },
+    {
+      "type": "Agents::HTTPRequestAgent",
+      "name": "ThreatPost",
+      "disabled": false,
+      "description": null,
+      "guid": "6f08f7a2c4dd5339d2c7b98022b8",
+      "origin_story_identifier": "cloud:a035a6901a4fcb5758828235c959fc6b:b1440d1301e6734d229d6d5",
+      "options": {
+        "url": "https://threatpost.com/feed/",
+        "content_type": "xml",
+        "method": "get",
+        "payload": {}
+      },
+      "reporting": {
+        "time_saved_value": 0,
+        "time_saved_unit": "minutes"
+      },
+      "monitoring": {
+        "monitor_all_events": false,
+        "monitor_failures": false,
+        "monitor_no_events_emitted": null
+      },
+      "template": {
+        "created_from_template_guid": null,
+        "created_from_template_version": null,
+        "template_tags": []
+      },
+      "width": null,
+      "schedule": [
+        {
+          "cron": "*/10 * * * *",
+          "timezone": "Europe/Berlin"
+        }
+      ]
+    },
+    {
+      "type": "Agents::HTTPRequestAgent",
+      "name": "Security Week",
+      "disabled": false,
+      "description": null,
+      "guid": "f5c61c7b1c82f2c02ee6e78c5",
+      "origin_story_identifier": "cloud:a035a6901a4fcb5758828235c959fc6b:a4d440d1301e6734d229d6d5",
+      "options": {
+        "url": "https://www.securityweek.com/feed/",
+        "content_type": "xml",
+        "method": "get",
+        "payload": {}
+      },
+      "reporting": {
+        "time_saved_value": 0,
+        "time_saved_unit": "minutes"
+      },
+      "monitoring": {
+        "monitor_all_events": false,
+        "monitor_failures": false,
+        "monitor_no_events_emitted": null
+      },
+      "template": {
+        "created_from_template_guid": null,
+        "created_from_template_version": null,
+        "template_tags": []
+      },
+      "width": null,
+      "schedule": [
+        {
+          "cron": "0,30 * * * *",
+          "timezone": "Europe/Berlin"
+        }
+      ]
+    },
+    {
+      "type": "Agents::HTTPRequestAgent",
+      "name": "Bleeping Computer",
+      "disabled": false,
+      "description": null,
+      "guid": "caad630603ee303b189818adc",
+      "origin_story_identifier": "cloud:a035a6901a4fcb5758828235c96b:a4deb4d7bb1440d4d229d6d5",
+      "options": {
+        "url": "https://www.bleepingcomputer.com/feed/",
+        "content_type": "xml",
+        "method": "get",
+        "payload": {}
+      },
+      "reporting": {
+        "time_saved_value": 0,
+        "time_saved_unit": "minutes"
+      },
+      "monitoring": {
+        "monitor_all_events": false,
+        "monitor_failures": false,
+        "monitor_no_events_emitted": null
+      },
+      "template": {
+        "created_from_template_guid": null,
+        "created_from_template_version": null,
+        "template_tags": []
+      },
+      "width": null,
+      "schedule": [
+        {
+          "cron": "*/12 * * * *",
+          "timezone": "Europe/Berlin"
+        }
+      ]
+    },
+    {
+      "type": "Agents::HTTPRequestAgent",
+      "name": "Dark Reading",
+      "disabled": false,
+      "description": null,
+      "guid": "357102cbed980e95dd54ce4f3967789c",
+      "origin_story_identifier": "cloud:a035a6901a4fcb5758828235c959fc6b7bb1440d1301e6734d229d6d5",
+      "options": {
+        "url": "https://www.darkreading.com/rss.xml",
+        "content_type": "xml",
+        "method": "get",
+        "payload": {}
+      },
+      "reporting": {
+        "time_saved_value": 0,
+        "time_saved_unit": "minutes"
+      },
+      "monitoring": {
+        "monitor_all_events": false,
+        "monitor_failures": false,
+        "monitor_no_events_emitted": null
+      },
+      "template": {
+        "created_from_template_guid": null,
+        "created_from_template_version": null,
+        "template_tags": []
+      },
+      "width": null,
+      "schedule": null
+    },
+    {
+      "type": "Agents::EventTransformationAgent",
+      "name": "Explode News",
+      "disabled": false,
+      "description": null,
+      "guid": "1d952991a08d7e05775905fb2f",
+      "origin_story_identifier": "cloud:a035a6901a4fcb5758828235c959fc6b:a4deb4d7bb1401e6734d229d6d5",
+      "options": {
+        "mode": "explode",
+        "path": "=bleeping_computer.body.rss.channel.item",
+        "to": "individual_news",
+        "limit": "5"
+      },
+      "reporting": {
+        "time_saved_value": 0,
+        "time_saved_unit": "minutes"
+      },
+      "monitoring": {
+        "monitor_all_events": false,
+        "monitor_failures": false,
+        "monitor_no_events_emitted": null
+      },
+      "template": {
+        "created_from_template_guid": null,
+        "created_from_template_version": null,
+        "template_tags": []
+      },
+      "width": null,
+      "schedule": null
+    },
+    {
+      "type": "Agents::EventTransformationAgent",
+      "name": "Explode News",
+      "disabled": false,
+      "description": null,
+      "guid": "b2b535fdf54cb003146c15",
+      "origin_story_identifier": "cloud:a035a6901a4fcb5758828235c959f7bb1440d1301e6734d229d6d5",
+      "options": {
+        "mode": "explode",
+        "path": "=krebs_on_security.body.rss.channel.item",
+        "to": "individual_news",
+        "limit": "10"
+      },
+      "reporting": {
+        "time_saved_value": 0,
+        "time_saved_unit": "minutes"
+      },
+      "monitoring": {
+        "monitor_all_events": false,
+        "monitor_failures": false,
+        "monitor_no_events_emitted": null
+      },
+      "template": {
+        "created_from_template_guid": null,
+        "created_from_template_version": null,
+        "template_tags": []
+      },
+      "width": null,
+      "schedule": null
+    },
+    {
+      "type": "Agents::EventTransformationAgent",
+      "name": "Event Transform Action",
+      "disabled": false,
+      "description": null,
+      "guid": "a9c634fd0d8621d9d0d01f3e12",
+      "origin_story_identifier": "cloud:a035a6901a4fcb5758828235c959fc6b:a4d0d1301e6734d229d6d5",
+      "options": {
+        "mode": "message_only",
+        "loop": false,
+        "payload": {
+          "message": "This is an automatically generated message from Tines"
+        }
+      },
+      "reporting": {
+        "time_saved_value": 0,
+        "time_saved_unit": "minutes"
+      },
+      "monitoring": {
+        "monitor_all_events": false,
+        "monitor_failures": false,
+        "monitor_no_events_emitted": null
+      },
+      "template": {
+        "created_from_template_guid": null,
+        "created_from_template_version": null,
+        "template_tags": []
+      },
+      "width": null,
+      "schedule": null
+    },
+    {
+      "type": "Agents::EventTransformationAgent",
+      "name": "Explode News",
+      "disabled": false,
+      "description": null,
+      "guid": "b0bbbd2dcbb9a87e2a50333b4",
+      "origin_story_identifier": "cloud:a035a6901a4fcb5758828235c959fc6b:a4deb4d71e6734d229d6d5",
+      "options": {
+        "mode": "explode",
+        "path": "=threatpost.body.rss.channel.item",
+        "to": "individual_news",
+        "limit": "10"
+      },
+      "reporting": {
+        "time_saved_value": 0,
+        "time_saved_unit": "minutes"
+      },
+      "monitoring": {
+        "monitor_all_events": false,
+        "monitor_failures": false,
+        "monitor_no_events_emitted": null
+      },
+      "template": {
+        "created_from_template_guid": null,
+        "created_from_template_version": null,
+        "template_tags": []
+      },
+      "width": null,
+      "schedule": null
+    },
+    {
+      "type": "Agents::EventTransformationAgent",
+      "name": "Explode News",
+      "disabled": false,
+      "description": null,
+      "guid": "81a4662f361152ea6b4221eb8012a7aa",
+      "origin_story_identifier": "cloud:a035a6901a4fcb5758828235c959fc6b:a4deb4d7bb1440d1301e6734d229d6d5",
+      "options": {
+        "mode": "explode",
+        "path": "=security_week.body.rss.channel.item",
+        "to": "individual_news",
+        "limit": "500"
+      },
+      "reporting": {
+        "time_saved_value": 0,
+        "time_saved_unit": "minutes"
+      },
+      "monitoring": {
+        "monitor_all_events": false,
+        "monitor_failures": false,
+        "monitor_no_events_emitted": null
+      },
+      "template": {
+        "created_from_template_guid": null,
+        "created_from_template_version": null,
+        "template_tags": []
+      },
+      "width": null,
+      "schedule": null
+    },
+    {
+      "type": "Agents::HTTPRequestAgent",
+      "name": "The Hacker News",
+      "disabled": false,
+      "description": null,
+      "guid": "40f17e69f20979076b62b89403164c03",
+      "origin_story_identifier": "cloud:a035a6901a4fcb5758828235c959fc6b:a4deb40d1301e6734d229d6d5",
+      "options": {
+        "url": "https://thehackernews.com/feeds/posts/default",
+        "content_type": "xml",
+        "method": "get",
+        "payload": {}
+      },
+      "reporting": {
+        "time_saved_value": 0,
+        "time_saved_unit": "minutes"
+      },
+      "monitoring": {
+        "monitor_all_events": false,
+        "monitor_failures": false,
+        "monitor_no_events_emitted": null
+      },
+      "template": {
+        "created_from_template_guid": null,
+        "created_from_template_version": null,
+        "template_tags": []
+      },
+      "width": null,
+      "schedule": [
+        {
+          "cron": "*/15 * * * *",
+          "timezone": "Europe/Berlin"
+        }
+      ]
+    },
+    {
+      "type": "Agents::EventTransformationAgent",
+      "name": "Explode News",
+      "disabled": false,
+      "description": null,
+      "guid": "9c2852a8384d4483fb01a390f390fa85",
+      "origin_story_identifier": "cloud:a035a6901a4fcb5758828235c959fc6b:a4deb4d7bb134d229d6d5",
+      "options": {
+        "mode": "explode",
+        "path": "=the_hacker_news.body.rss.channel.item",
+        "to": "individual_news",
+        "limit": "5"
+      },
+      "reporting": {
+        "time_saved_value": 0,
+        "time_saved_unit": "minutes"
+      },
+      "monitoring": {
+        "monitor_all_events": false,
+        "monitor_failures": false,
+        "monitor_no_events_emitted": null
+      },
+      "template": {
+        "created_from_template_guid": null,
+        "created_from_template_version": null,
+        "template_tags": []
+      },
+      "width": null,
+      "schedule": null
+    },
+    {
+      "type": "Agents::EventTransformationAgent",
+      "name": "Deduplicate News",
+      "disabled": false,
+      "description": null,
+      "guid": "dcb94889865c8196be2aa0da7f8ba394",
+      "origin_story_identifier": "cloud:d521f765a49c72507257a2620612ee96:163d93160191a90806ed1ca2",
+      "options": {
+        "mode": "deduplicate",
+        "lookback": "100",
+        "path": "<<explode_news.individual_news.link>><<explode_news.individual_news.title>>\n<<explode_news.individual_news.guid>>"
+      },
+      "reporting": {
+        "time_saved_value": 0,
+        "time_saved_unit": "minutes"
+      },
+      "monitoring": {
+        "monitor_all_events": false,
+        "monitor_failures": false,
+        "monitor_no_events_emitted": null
+      },
+      "template": {
+        "created_from_template_guid": null,
+        "created_from_template_version": null,
+        "template_tags": []
+      },
+      "width": null,
+      "schedule": null
+    },
+    {
+      "type": "Agents::HTTPRequestAgent",
+      "name": "Send a message",
+      "disabled": false,
+      "description": "Posts a message to a public channel, private channel, or direct message/IM channel.\n\nLink to documentation: https://api.slack.com/methods/chat.postMessage\n\nRequired scope: chat:write",
+      "guid": "851aebc8fa2c635d1f836bbf8e94",
+      "origin_story_identifier": "cloud:a035a6901a4fcb5758828235c959fc6b:a4deb4d7b1e6734d229d6d5",
+      "options": {
+        "url": "https://slack.com/api/chat.postMessage",
+        "content_type": "json; charset=utf-8",
+        "method": "post",
+        "payload": "=LOCAL.final_payload",
+        "headers": {
+          "Authorization": "Bearer <<INPUT.slack_credential>>"
+        },
+        "local": {
+          "all_options": {
+            "channel": "<<INPUT.channel_user_id>>",
+            "text": "<<INPUT.message>>",
+            "icon_emoji": "<<INPUT.icon_emoji>>",
+            "icon_url": "<<INPUT.icon_url>>",
+            "link_names": "=INPUT.link_names",
+            "thread_ts": "\"<<INPUT.thread_timestamp>>\"",
+            "username": "<<INPUT.username>>",
+            "metadata": "=INPUT.metadata",
+            "mrkdwn": "=INPUT.markdown",
+            "reply_broadcast": "=INPUT.send_reply_to_channel",
+            "unfurl_links": "=INPUT.unfurl_links",
+            "unfurl_media": "=INPUT.unfurl_media",
+            "parse": "<<INPUT.parse>>"
+          },
+          "final_payload": "=REJECT(\n  LOCAL.all_options,\n  LAMBDA(\n    item,\n    OR(\n      item = NULL,\n      IF(\n        OR(\n          TYPE(item) = \"TrueClass\",\n          TYPE(item) = \"FalseClass\",\n          TYPE(item) = \"Integer\"\n        ),\n        IS_EMPTY(TEXT(item)),\n        IS_EMPTY(item)\n      )\n    )\n  )\n)"
+        }
+      },
+      "reporting": {
+        "time_saved_value": 0,
+        "time_saved_unit": "minutes"
+      },
+      "monitoring": {
+        "monitor_all_events": false,
+        "monitor_failures": false,
+        "monitor_no_events_emitted": null
+      },
+      "template": {
+        "created_from_template_guid": "962a1d96f0c7fe98f124f5b0bee07caec8e8471972ffb8d44728c7802092be50",
+        "created_from_template_version": null,
+        "template_tags": []
+      },
+      "width": null,
+      "schedule": null
+    }
+  ],
+  "diagram_notes": [
+    {
+      "content": "Stay on top of new security vulnerabilities and the latest news in cyber by receiving the news as they appear in a constant centralized space.\n\n\nThe story is built with these core actions:\n\n1. HTTP Request – fetch the feed (RSS / API)\n2. Trigger on change – detect new items only\n3. Event Transformation – explode feed into individual news items\n4. Slack Action – post each new item to Slack\n\n,
+      "position": [
+        -105,
+        825
+      ],
+      "guid": "07634e607800fbf5356bc7cf7e",
+      "width": 270
+    }
+  ],
+  "links": [
+    {
+      "source": 0,
+      "receiver": 6
+    },
+    {
+      "source": 1,
+      "receiver": 8
+    },
+    {
+      "source": 2,
+      "receiver": 9
+    },
+    {
+      "source": 3,
+      "receiver": 5
+    },
+    {
+      "source": 4,
+      "receiver": 7
+    },
+    {
+      "source": 5,
+      "receiver": 12
+    },
+    {
+      "source": 6,
+      "receiver": 12
+    },
+    {
+      "source": 8,
+      "receiver": 12
+    },
+    {
+      "source": 9,
+      "receiver": 12
+    },
+    {
+      "source": 10,
+      "receiver": 11
+    },
+    {
+      "source": 11,
+      "receiver": 12
+    },
+    {
+      "source": 12,
+      "receiver": 13
+    }
+  ],
+  "diagram_layout": "{\"1d952991a08d7e05775942f20f05fb2f\":[-525,0],\"357102cbed980e95dd54ce4f3967789c\":[690,345],\"40f17e69f20979076b62b89403164c03\":[-795,-90],\"677c5e87fe9bf95a454eafa0d2b71c38\":[-285,-90],\"6f08f7a2c4dd5339d2c7b9802dd872b8\":[135,-90],\"81a4662f361152ea6b4221eb8012a7aa\":[-90,0],\"851aebc8fa2c635d1f836bb54abf8e94\":[-390,315],\"9c2852a8384d4483fb01a390f390fa85\":[-795,45],\"a9c634fd0d8621d9d78db640d01f3e12\":[690,480],\"b0bbbd2dcbb9a87e2a50379a119133b4\":[120,0],\"b2b535fdf54cb0033a16d0addf146c15\":[-300,0],\"caad630603ee303b189b3fa4bb818adc\":[-525,-90],\"dcb94889865c8196be2aa0da7f8ba394\":[-420,210],\"f5c61c7b1c82f2c02ee6e78a7cf73cc5\":[-75,-90]}",
+  "story_library_metadata": {},
+  "monitor_failures": false,
+  "synchronous_webhooks_enabled": false,
+  "integrations": [
+    {
+      "action_inputs": [
+        {
+          "name": "Channel / User ID",
+          "description": "You can use a channel name (like ‘#general’) or an ID (like ‘C1234567890’). For non-public channels, specify the ID; this includes private channels, multi-person direct message channels (use the group ID), or DMs to a specific user (use the user ID).",
+          "required": true,
+          "type": "TEXT",
+          "ranking": 0,
+          "value": "\"#slack-channel\"",
+          "options": [
+            "Option 1",
+            "Option 2"
+          ],
+          "is_collapsed": false,
+          "sub_type": "HTML",
+          "multi_select_enabled": false,
+          "llm_json_schema": "{}"
+        },
+        {
+          "name": "Message",
+          "description": "Use plain text, or [Slack formatting markup](https://slack.com/help/articles/202288908-Format-your-messages#Markup).",
+          "required": true,
+          "type": "TEXT",
+          "ranking": 1,
+          "value": "\"Hacker News Summary\\n\\nTitle: <<explode_news.individual_news.title>> \\n\\n\\nDescription: <<explode_news.individual_news.description>>\\n\\nLink:\\n<<explode_news.individual_news.link>>\"",
+          "options": [
+            "Option 1",
+            "Option 2"
+          ],
+          "is_collapsed": false,
+          "sub_type": "HTML",
+          "multi_select_enabled": false,
+          "llm_json_schema": "{}"
+        },
+        {
+          "name": "Slack Credential",
+          "description": "",
+          "required": false,
+          "type": "CREDENTIAL",
+          "ranking": 2,
+          "value": "\"=CREDENTIAL.slack\"",
+          "options": [
+            "Option 1",
+            "Option 2"
+          ],
+          "is_collapsed": false,
+          "sub_type": "HTML",
+          "multi_select_enabled": false,
+          "llm_json_schema": "{}"
+        },
+        {
+          "name": "Icon emoji",
+          "description": "Emoji to use as the icon for this message (i.e. :chart_with_upwards_trend:). Overrides Icon URL input.",
+          "required": false,
+          "type": "TEXT",
+          "ranking": 3,
+          "value": "\"\"",
+          "options": [
+            "Option 1",
+            "Option 2"
+          ],
+          "is_collapsed": true,
+          "sub_type": "HTML",
+          "multi_select_enabled": false,
+          "llm_json_schema": "{}"
+        },
+        {
+          "name": "Icon URL",
+          "description": "URL to an image to use as the icon for this message.",
+          "required": false,
+          "type": "TEXT",
+          "ranking": 4,
+          "value": "\"\"",
+          "options": [
+            "Option 1",
+            "Option 2"
+          ],
+          "is_collapsed": true,
+          "sub_type": "HTML",
+          "multi_select_enabled": false,
+          "llm_json_schema": "{}"
+        },
+        {
+          "name": "Link names?",
+          "description": "Find and link user groups. No longer supports linking individual users; use syntax shown in [Mentioning Users](https://api.slack.com/reference/surfaces/formatting#mentioning-users) instead.",
+          "required": false,
+          "type": "BOOLEAN",
+          "ranking": 5,
+          "value": "\"\"",
+          "options": [
+            "Option 1",
+            "Option 2"
+          ],
+          "is_collapsed": true,
+          "sub_type": "HTML",
+          "multi_select_enabled": false,
+          "llm_json_schema": "{}"
+        },
+        {
+          "name": "Markdown",
+          "description": "Select 'no' to disable Slack markup parsing. Enabled by default.",
+          "required": false,
+          "type": "BOOLEAN",
+          "ranking": 6,
+          "value": "\"\"",
+          "options": [
+            "Option 1",
+            "Option 2"
+          ],
+          "is_collapsed": true,
+          "sub_type": "HTML",
+          "multi_select_enabled": false,
+          "llm_json_schema": "{}"
+        },
+        {
+          "name": "Parse",
+          "description": "Change how messages are treated. See [further details](https://api.slack.com/methods/chat.postMessage#formatting).",
+          "required": false,
+          "type": "TEXT",
+          "ranking": 7,
+          "value": "\"\"",
+          "options": [
+            "Option 1",
+            "Option 2"
+          ],
+          "is_collapsed": true,
+          "sub_type": "HTML",
+          "multi_select_enabled": false,
+          "llm_json_schema": "{}"
+        },
+        {
+          "name": "Thread timestamp",
+          "description": "Provide another message's ts value to make this message a reply. Avoid using a reply's ts value; use its parent instead.",
+          "required": false,
+          "type": "TEXT",
+          "ranking": 8,
+          "value": "\"\"",
+          "options": [
+            "Option 1",
+            "Option 2"
+          ],
+          "is_collapsed": true,
+          "sub_type": "HTML",
+          "multi_select_enabled": false,
+          "llm_json_schema": "{}"
+        },
+        {
+          "name": "Unfurl links?",
+          "description": "Select 'yes' to enable unfurling of primarily text-based content.",
+          "required": false,
+          "type": "BOOLEAN",
+          "ranking": 9,
+          "value": "\"\"",
+          "options": [
+            "Option 1",
+            "Option 2"
+          ],
+          "is_collapsed": true,
+          "sub_type": "HTML",
+          "multi_select_enabled": false,
+          "llm_json_schema": "{}"
+        },
+        {
+          "name": "Unfurl media?",
+          "description": "Select 'no' to disable unfurling of media content.",
+          "required": false,
+          "type": "BOOLEAN",
+          "ranking": 10,
+          "value": "\"\"",
+          "options": [
+            "Option 1",
+            "Option 2"
+          ],
+          "is_collapsed": true,
+          "sub_type": "HTML",
+          "multi_select_enabled": false,
+          "llm_json_schema": "{}"
+        },
+        {
+          "name": "Username",
+          "description": "Specify your bot's username that will send the message.",
+          "required": false,
+          "type": "TEXT",
+          "ranking": 11,
+          "value": "\"\"",
+          "options": [
+            "Option 1",
+            "Option 2"
+          ],
+          "is_collapsed": true,
+          "sub_type": "HTML",
+          "multi_select_enabled": false,
+          "llm_json_schema": "{}"
+        },
+        {
+          "name": "Metadata",
+          "description": "JSON object with event_type and event_payload fields, presented as a URL-encoded string. Metadata you post to Slack is accessible to any app or user who is a member of that workspace. ex: {\"event_type\": \"task_created\", \"event_payload\": { \"id\": \"11223\", \"title\": \"Redesign Homepage\"}}",
+          "required": false,
+          "type": "OBJECT",
+          "ranking": 12,
+          "value": "\"\"",
+          "options": [
+            "Option 1",
+            "Option 2"
+          ],
+          "is_collapsed": true,
+          "sub_type": "HTML",
+          "multi_select_enabled": false,
+          "llm_json_schema": "{}"
+        },
+        {
+          "name": "Send reply to channel?",
+          "description": "Used in conjunction with input 'Thread timestamp' and indicates whether reply should be made visible to everyone in the channel or conversation. Defaults to false.",
+          "required": false,
+          "type": "BOOLEAN",
+          "ranking": 13,
+          "value": "\"\"",
+          "options": [
+            "Option 1",
+            "Option 2"
+          ],
+          "is_collapsed": true,
+          "sub_type": "HTML",
+          "multi_select_enabled": false,
+          "llm_json_schema": "{}"
+        }
+      ],
+      "action_guid": "851aebc8fa2c635d1f836bb54abf8e94",
+      "product": "Slack",
+      "action_options_keys": []
+    }
+  ],
+  "parent_only_send_to_story": false,
+  "send_to_story_timeout_enabled": false,
+  "send_to_story_timeout_duration_seconds": null,
+  "keep_events_for": 86400,
+  "reporting_status": true,
+  "send_to_story_enabled": false,
+  "entry_agent_guid": null,
+  "exit_agent_guids": [],
+  "api_entry_action_guids": [],
+  "api_exit_action_guids": [],
+  "send_to_story_access": null,
+  "send_to_story_access_source": 0,
+  "send_to_story_skill_use_requires_confirmation": true,
+  "pages": [],
+  "tags": [],
+  "time_saved_unit": "minutes",
+  "time_saved_value": 0,
+  "origin_story_identifier": "cloud:a035a6901a4fcb5c959fc6b:a4deb4d7bb01e6734d229d6d5",
+  "recipients": [
+    "test@gmail.com"
+  ],
+  "integration_product": null,
+  "integration_vendor": null,
+  "llm_product_instructions": "",
+  "send_to_stories": [],
+  "exported_at": "2026-01-23T10:11:27Z",
+  "icon": ":performing_arts:"
+}
