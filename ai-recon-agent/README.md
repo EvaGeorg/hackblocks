@@ -51,7 +51,23 @@ python main.py 192.168.1.1 --output markdown --save
 \`\`\`
 
 ## Architecture
-The agent uses LangChain's OpenAI Tools agent with 5 custom tools (will describe tools later)
+The agent uses LangChain's OpenAI Tools agent with 5 custom tools:
+
+dns_tools.py
+Performs DNS enumeration (A, MX, NS, TXT, CNAME records) to map infrastructure and identify hosting, email providers, and metadata.
+
+whois_tools.py
+Retrieves domain ownership information such as registrar, creation/expiration dates, and organization details for OSINT insights.
+
+subdomain_tools.py
+Discovers common subdomains (e.g. admin, api, dev) to expand the attack surface and uncover hidden entry points.
+
+http_tools.py
+Probes HTTP/HTTPS endpoints to extract headers, detect technologies, and analyze security configurations.
+
+port_tools.py
+Uses Nmap to scan for open ports and running services, helping identify exposed systems and potential vulnerabilities.
+
 
 ## Legal Notice
 Only use against targets you own or have explicit permission to test.
