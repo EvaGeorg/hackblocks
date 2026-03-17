@@ -1,7 +1,6 @@
 from langchain_openai import ChatOpenAI
-from langchain.agents import AgentExecutor, create_openai_tools_agent
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
-from langchain_core.messages import SystemMessage
+from langgraph.prebuilt import create_react_agent
 from dotenv import load_dotenv
 import os
 
@@ -27,29 +26,28 @@ For each target:
 
 Be methodical. Use each relevant tool. Report ALL findings clearly."""
 
-def build_agent(verbose: bool = True) -> AgentExecutor:
+def run_recon(target: str) -> dict:
     llm = ChatOpenAI(
         model=os.getenv("LLM_MODEL", "gpt-4o"),
         temperature=0,
         api_key=os.getenv("OPENAI_API_KEY"),
     )
-    
-    prompt = ChatPromptTemplate.from_messages([
-        ("system", SYSTEM_PROMPT),
-        ("human", "{input}"),
-        MessagesPlaceholder("agent_scratchpad"),
-    ])
-    
-    agent = create_openai_tools_agent(llm, TOOLS, prompt)
-    return AgentExecutor(
-        agent=agent,
+
+    agent = create_react_agent(
+        model=llm,
         tools=TOOLS,
-        verbose=verbose,
-        max_iterations=int(os.getenv("MAX_ITERATIONS", 10)),
-        return_intermediate_steps=True,
+        prompt=SYSTEM_PROMPT,
     )
 
-def run_recon(target: str) -> dict:
-    agent = build_agent(verbose=os.getenv("VERBOSE", "true").lower() == "true")
-    result = agent.invoke({"input": f"Perform full reconnaissance on target: {target}"})
-    return result
+    result = agent.invoke({
+        "messages": [{"role": "user", "content": f"Perform full reconnaissance on target: {target}"}]
+    })
+
+    # Extract the final text response
+    final_message = result["messages"][-1]
+    output = final_message.content if hasattr(final_message, "content") else str(final_message)
+
+    return {
+        "output": output,
+        "intermediate_steps": result["messages"],
+    }

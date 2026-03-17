@@ -26,7 +26,7 @@ def main():
     output_data = {
         "target": args.target,
         "output": result["output"],
-        "steps": len(result.get("intermediate_steps", [])),
+        "steps": len([m for m in result.get("intermediate_steps", []) if hasattr(m, "tool_calls")]),
     }
     
     if args.save:
