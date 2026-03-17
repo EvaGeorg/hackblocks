@@ -3,7 +3,7 @@ from langchain.tools import tool
 
 @tool
 def dns_lookup(target: str) -> str:
-	 """Perform DNS enumeration on a domain. Returns A, MX, NS, TXT records."""
+    """Perform DNS enumeration on a domain. Returns A, MX, NS, TXT records."""
     results = {}
     for record_type in ["A", "MX", "NS", "TXT", "CNAME"]:
         try:
