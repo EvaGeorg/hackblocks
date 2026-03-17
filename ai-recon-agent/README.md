@@ -16,7 +16,7 @@ selects tools dynamically, and outputs structured findings.
 
 ## Installation
 \`\`\`bash
-git clone https://github.com/EvaGeorg/hackblocks/ai-recon-agent
+git clone https://github.com/EvaGeorg/hackblocks
 cd ai-recon-agent
 python -m venv .venv && source .venv/bin/activate
 pip install -e .
